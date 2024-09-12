@@ -1,0 +1,150 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Employee-SignUp</title>
+      <link href="{% static 'css/main.css' %}" rel="stylesheet">
+      <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.png' %}">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+   </head>
+   <body class="sc-emp-login">
+      <section class="h-100 gradient-form">
+         <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="col-xl-12 p-0">
+               <div class="text-black">
+                  <div class="row g-0">
+                     <div class="col-lg-5 align-items-center m-990-hide sc-mh1">
+                        <div class="row">
+                           <div class="col-xl-2"></div>
+                           <div class="col-xl-8 text-center text-black">
+                              <img src="{% static 'images/emp.webp' %}" class="img-fluid sc-mt-tp" alt="student"> 
+                              <h2 class="text-center title mt-4">Cohesive way to Showcase
+                                 <br><span class="sw-title-bgw title">your Skills & Experience</span>
+                              </h2>
+                           </div>
+                           <div class="col-xl-2"></div>
+                        </div>
+                     </div>
+                     <div class="col-lg-7 sc-mh1">
+                        <div class="card-body sw-login-wsec hw">
+                           <!-- Update the form to submit data -->
+                           <form method="POST" action="{% url 'employee_signup_form' %}">
+                              <!--Added Token-->
+                              {% csrf_token %}
+                              <div class="row">
+                                 <div class="col-xl-3"></div>
+                                 <div class="col-xl-6">
+                                    <a href="#" class="mb-5 pt-4 d-block"><img src="{% static 'images/logo.svg' %}"></a>      
+                                    <div class="text-start mb-4 mt-5">
+                                       <h1 class="title">Let's find <br>your next job</h1>
+                                    </div>
+                                    <div class="col-sm-12 form-outline mb-4">
+                                       <label class="form-label"><b>Select University</b> <small>*</small></label> 
+                                       <div class="dropdown">
+                                          <a class="sc-login-clg btn w-100 text-start dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Select your University</a>
+                                          <ul class="dropdown-menu w-100">
+                                             <li><a class="dropdown-item" href="#" onclick="document.getElementById('university').value='Pace University'"><img width="30" src="{% static 'images/pace.png' %}"> Pace University</a></li>
+                                             <li><a class="dropdown-item" href="#" onclick="document.getElementById('university').value='Columbia University'"><img width="30" src="{% static 'images/col.png' %}"> Columbia University</a></li>
+                                             <li><a class="dropdown-item" href="#" onclick="document.getElementById('university').value='Alabama A&M University'"><img width="30" src="{% static 'images/aa.png' %}"> Alabama A&M University</a></li>
+                                          </ul>
+
+                                          <input type="hidden" id="university" name="university">
+                                       </div>
+                                    </div>
+                                    <div class="col-sm-12 form-outline mb-4">
+                                       <label class="form-label"><b>Email address</b> <small>*</small></label>
+                                       <input type="email" class="form-control" name="email" placeholder="Email address"> 
+                                    </div>
+                                    <button type="submit" class="btn sc-btn-main montserrat-bold w-100">Continue</button>
+                                    <!-- <a href="student-signup-1.html" class="btn sc-btn-main montserrat-bold w-100">Continue</a>  -->
+                                    <div class="mt-3">
+                                       Already have an account?<br><a href="employees-login.html"><u>Sign in here</u></a>
+                                    </div>
+                                 </div>
+                                 <div class="col-xl-3"></div>
+                              </div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-12 mt-4 mb-4 p-0 mobile-display">
+                     <a href="mentros-signup.html">
+                        <div class="card-body sc-mue sw-login-wsec">
+                           <div class="d-flex align-items-center">
+                              <div class="flex-shrink-0">
+                                 <img src="{% static 'images/mtr.png' %}" class="img-fluid" alt="Mentors">
+                              </div>
+                              <div class="flex-grow-1 ms-3">
+                                 <h5 class="m-0">Mentors</h5>
+                                 <small>Your guide to academic success</small>
+                              </div>
+                           </div>
+                           <img class="sc-log-arw" src="{% static 'images/arrow.svg' %}">
+                        </div>
+                     </a>
+                  </div>
+                  <div class="col-12 mb-4 p-0 mobile-display">
+                     <a href="university-signup.html">
+                        <div class="card-body sc-mue sw-login-wsec">
+                           <div class="d-flex align-items-center">
+                              <div class="flex-shrink-0">
+                                 <img src="{% static 'images/uni.png' %}" class="img-fluid" alt="University">
+                              </div>
+                              <div class="flex-grow-1 ms-3">
+                                 <h5 class="m-0">University</h5>
+                                 <small>Discover your greatness.</small>
+                              </div>
+                           </div>
+                           <img class="sc-log-arw" src="{% static 'images/arrow.svg' %}">
+                        </div>
+                     </a>
+                  </div>
+                  <div class="col-12 mb-4 p-0 mobile-display">
+                     <a href="employees-signup.html">
+                        <div class="card-body sc-mue sw-login-wsec">
+                           <div class="d-flex align-items-center">
+                              <div class="flex-shrink-0">
+                                 <img src="{% static 'images/emp.png' %}" class="img-fluid" alt="University">
+                              </div>
+                              <div class="flex-grow-1 ms-3">
+                                 <h5 class="m-0">Employees</h5>
+                                 <small>Discover your greatness.</small>
+                              </div>
+                           </div>
+                           <img class="sc-log-arw" src="{% static 'images/arrow.svg' %}">
+                        </div>
+                     </a>
+                  </div>
+                  <div class="col-12 mb-4 p-0 mobile-display">
+                     <a href="Professional-signup.html">
+                        <div class="card-body sc-mue sw-login-wsec">
+                           <div class="d-flex align-items-center">
+                              <div class="flex-shrink-0">
+                                 <img src="{% static 'images/prof.png' %}" class="img-fluid" alt="University">
+                              </div>
+                              <div class="flex-grow-1 ms-3">
+                                 <h5 class="m-0">Professional</h5>
+                                 <small>Discover your greatness.</small>
+                              </div>
+                           </div>
+                           <img class="sc-log-arw" src="{% static 'images/arrow.svg' %}">
+                        </div>
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="MuiBox-root css-1tjecbh">
+            <svg width="1369" height="100vh" viewBox="0 0 1369 1012" fill="#f9dcf9" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+               <path d="M1369 1012L0 1012L515.961 337.522L571.126 0L1301.33 2.20232e-05L775.259 468.78L1369 1012Z" fill="inherit"></path>
+            </svg>
+         </div>
+      </section>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script> 
+   </body>
+</html>

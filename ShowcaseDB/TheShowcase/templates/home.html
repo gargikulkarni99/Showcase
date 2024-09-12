@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ShowcaseDB</title>
+</head>
+<body>
+    <h1>ShowcaseDB</h1>
+    <p>******************************************</p>
+    <br/>
+    <h2>Employees Table</h2>
+    <p>-----------------------------------------</p>
+    <!-- Django For Each Loop -->
+    {% for item in all_employees %}
+        <p>
+            Name: {{ item.first_name }} {{ item.last_name }} --- 
+            Email: {{ item.email }} --- 
+            CountryID: {{ item.country_id }} --- 
+            StateID: {{ item.state_id }} --- 
+            Password Exists: {% if item.password %}True{% else %}False{% endif %}
+        </p>
+    {% endfor %}
+</body>
+</html>
