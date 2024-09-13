@@ -49,6 +49,7 @@ class User(AbstractBaseUser):
     email = models.EmailField(unique=True) 
     address_line1 = models.CharField(max_length=255, blank=True, null=True)
     address_line2 = models.CharField(max_length=255, blank=True, null=True)
+    current_location = models.CharField(max_length=255, blank=True, null=True)
     city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True, blank=True, related_name='residents')
     state = models.ForeignKey(State, on_delete=models.SET_NULL, null=True, blank=True, related_name='residents')
     country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True, blank=True, related_name='residents')
@@ -78,9 +79,14 @@ class University(models.Model):
         )
 
 class Employee(User):
-    current_location = models.CharField(max_length=255, blank=True, null=True)
     company_name = models.CharField(max_length=255)
     university = models.ForeignKey(University, on_delete=models.SET_NULL, null=True, blank=True, related_name='employees')
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name} - {self.company_name}"
+
+class Mentor(User):
+    organization_name = models.CharField(max_length=255)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} - {self.company_name}"

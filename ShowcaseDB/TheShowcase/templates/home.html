@@ -16,7 +16,22 @@
             Email: {{ item.email }} --- 
             CountryID: {{ item.country_id }} --- 
             StateID: {{ item.state_id }} --- 
-            Password Exists: {% if item.password %}True{% else %}False{% endif %}
+            Password Exists: {% if item.password %}True{% else %}False{% endif %} ---
+            Company : {{item.company_name}}
+        </p>
+    {% endfor %}
+    <br/>
+    <h2>Mentors Table</h2>
+    <p>-----------------------------------------</p>
+    <!-- Django For Each Loop -->
+    {% for item in all_mentors %}
+        <p>
+            Name: {{ item.first_name }} {{ item.last_name }} --- 
+            Email: {{ item.email }} --- 
+            CountryID: {{ item.country_id }} --- 
+            StateID: {{ item.state_id }} --- 
+            Password Exists: {% if item.password %}True{% else %}False {% endif %} ---
+            Organization : {{item.organization_name}}
         </p>
     {% endfor %}
 </body>
