@@ -32,9 +32,6 @@ def employees_login(request):
 
     return render(request, 'employees-login.html', {})
 
-def employees_forgot_password(request):
-    return render(request, 'forgot-password-employees.html', {})
-
 # mentors, professionals, student, university
 def employees_signup_step1(request):
     
@@ -100,3 +97,45 @@ def employees_signup_step2(request):
             print("Error: Passwords don't match")
 
     return render(request, 'employees-signup-1.html', {})
+
+
+def employees_forgot_step1(request):
+
+    if request.method == 'POST':
+        request.session['email'] = request.POST.get('email')
+        print('email:', request.session['email'])
+
+        subject='Password Reset Link - The Showcase'
+        message = "Link to reset your password: [localhost:8000/employees-forgot-step2]"
+        from_email = 'showcaseexchangeittest@gmail.com'
+        receiver = [request.session['email']]
+
+        send_mail(
+            subject,
+            message,
+            from_email,
+            receiver,
+            fail_silently=False
+        )
+        
+    return render(request, 'forgot-password-employees.html', {})
+
+def employees_forgot_step2(request):
+
+    # add a field for email in the forgot password page?
+    if request.method == 'POST':
+        placeholder = 'test2@gmail.com'
+        password = request.POST.get('password')
+
+        if password == request.POST.get('password_confirm'):
+            try:
+                user = Employee.objects.get(email=placeholder)
+                user.password_hash = password
+                user.save()
+                print(f'Password successfully updated for user at email {placeholder}!')
+            except:
+                print('Error: User does not exist')
+        else:
+            print("Error: Passwords don't match")
+
+    return render(request, 'forgot-password-employees-1.html', {})
